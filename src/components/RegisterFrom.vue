@@ -99,7 +99,7 @@ let submitForm = async () => {
     userConfirmPassword: confirmPassword.value,
     userContact: contact.value
   }
-  const response = await fetch('http://localhost:3000/users/', {
+  const response = await fetch(process.env.VUE_APP_URL_ALL_USER, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

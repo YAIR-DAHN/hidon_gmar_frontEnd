@@ -33,7 +33,7 @@ export default {
         userPhone: this.username,
         userPassword: this.password,
       }
-      const response = await fetch('http://localhost:3000/users/login', {
+      const response = await fetch(process.env.VUE_APP_URL_USER_LOGIN, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

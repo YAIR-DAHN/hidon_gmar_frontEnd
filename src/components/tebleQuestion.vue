@@ -1,3 +1,5 @@
+<!-- דף עדיין לא עובד, צריך לעשות התאמות -->
+
 <template>
 
     <ag-grid-vue
@@ -28,7 +30,7 @@ export default {
   const rowData = ref([]);
 
     const fetchUsers = async () => {
-    const response = await fetch('http://localhost:3000/tests/Q/', { headers: { 'Authorization' : 'Bearer ' + localStorage.getItem('token') }})
+    const response = await fetch(process.env.VUE_APP_URL_ALL_QUESTION, { headers: { 'Authorization' : 'Bearer ' + localStorage.getItem('token') }})
     console.log(response);
     rowData.value = await response.json()
     console.log(rowData.value)

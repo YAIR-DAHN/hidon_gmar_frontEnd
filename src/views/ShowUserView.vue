@@ -1,8 +1,9 @@
+<!-- לא בימוש מכיוון שיש תצוגת טבלה -->
 <template>
   <div class="home">
     <showUser/>
   </div>
-  <h1>userrrrrrrrrrr</h1>
+  <h1>user list</h1>
 </template>
 
 <script>

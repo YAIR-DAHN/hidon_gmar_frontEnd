@@ -34,7 +34,7 @@ export default {
   const rowData = ref([]);
 
     const fetchUsers = async () => {
-    const response = await fetch('http://localhost:3000/users', { headers: { 'Authorization' : 'Bearer ' + localStorage.getItem('token') }})
+    const response = await fetch(process.env.VUE_APP_URL_ALL_USER, { headers: { 'Authorization' : 'Bearer ' + localStorage.getItem('token') }})
     console.log(response);
     rowData.value = await response.json()
     console.log(rowData.value)

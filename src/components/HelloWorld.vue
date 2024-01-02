@@ -1,3 +1,5 @@
+<!-- דף זה לא בשימוש-->
+
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>

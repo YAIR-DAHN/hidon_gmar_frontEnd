@@ -1,3 +1,5 @@
+<!-- דף זה לא בשימוש מכיוון שיש את תצוגת הטבלה -->
+
 <template>
     <div>
         <h1>Users</h1>
@@ -20,7 +22,8 @@ import { ref } from 'vue'
 const users = ref([])
 
 const fetchUsers = async () => {
-    const response = await fetch('http://localhost:3000/users', { headers: { 'Authorization' : 'Bearer ' + localStorage.getItem('token') }})
+    const response = await fetch(process.env.VUE_APP_URL_ALL_USER,
+        { headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') } })
     console.log(response);
     users.value = await response.json()
     console.log(users.value)
@@ -28,4 +31,4 @@ const fetchUsers = async () => {
 
 fetchUsers()
 
- </script> 
+</script> 

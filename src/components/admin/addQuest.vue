@@ -90,7 +90,6 @@ export default {
         type: 'a',
         id: ''
       });
-      // console.log(this.questions);
 
     }
 
@@ -98,7 +97,6 @@ export default {
 }
 
 let submitForm = async (questions) => {
-  // console.log("start");
   const credentials = {
     test_id: questions.examId,
     question: questions.questionText,
@@ -106,11 +104,11 @@ let submitForm = async (questions) => {
     correct_answer: questions.correctAnswer,
     type: questions.type
   }
-  const response = await fetch('http://localhost:3000/tests/addQuest', {
+  const response = await fetch(process.env.VUE_APP_URL_ADD_QUESTION, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      // 'Authorization': 'Bearer ' + localStorage.getItem('token')
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
     },
     body: JSON.stringify(credentials)
 
