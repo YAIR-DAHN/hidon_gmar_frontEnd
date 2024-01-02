@@ -4,7 +4,7 @@
     <h2>כניסה לאתר</h2>
     <form @submit="submitForm">
       <div class="form-group">
-        <label for="username">שם משתמש / מספר טלפון / כתובת מייל</label>
+        <label for="username">הזן מספר טלפון / כתובת מייל</label>
         <input type="text" id="username" v-model="username" required>
       </div>
       <div class="form-group">
@@ -22,14 +22,33 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      phone: '',
     };
   },
   methods: {
-    submitForm() {
-      // כאן תוכל להוסיף קוד לטיפול בשליחת הטופס
-      console.log('שם משתמש / מספר טלפון / כתובת מייל:', this.username);
-      console.log('סיסמה:', this.password);
+    async submitForm() {
+      const credentials = {
+        userEmail: this.username,
+        userPhone: this.username,
+        userPassword: this.password,
+      }
+      const response = await fetch('http://localhost:3000/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials)
+      })
+
+      const data = await response.json()
+      console.log(data)
+      if (data.userToken){
+        this.$router.push('/')}
+        else {
+          alert('שם משתמש או סיסמה שגויים')
+        }
+      localStorage.setItem('token', data.userToken)
     }
   }
 };

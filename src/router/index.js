@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import loginView from '../views/loginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import ShowUserView from '../views/ShowUserView.vue'
+import AddQuestView from '../views/AddQuestView.vue'
 
 const routes = [
   {
@@ -32,7 +33,13 @@ const routes = [
     path: '/showUser',
     name: 'showUser',
     component: ShowUserView
-  }
+  },
+  {
+    path: '/creat_test',
+    name: 'creatTest',
+    component: AddQuestView
+  },
+
  
 ]
 

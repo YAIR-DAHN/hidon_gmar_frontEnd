@@ -1,5 +1,14 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <tebleUsers/>
   </div>
 </template>
+<script>
+import tebleUsers from '@/components/tebleUsers.vue';
+export default {
+  name: 'AboutView',
+  components: {
+    tebleUsers
+  }
+}
+</script>

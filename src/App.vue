@@ -1,10 +1,12 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/login">login</router-link> |
-    <router-link to="/Register">Register</router-link> |
-    <router-link to="/showUser">show user</router-link>
+    <router-link to="/">בית</router-link> |
+    <router-link to="/about">משתמשים</router-link> |
+    <router-link to="/login">כניסה</router-link> |
+    <router-link to="/Register">הרשמה</router-link> |
+    <router-link to="/creat_test">יצירת שאלות</router-link> |
+
+    <!-- <router-link to="/showUser">show user</router-link> -->
   </nav>
   <router-view/>
 </template>

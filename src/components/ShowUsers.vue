@@ -21,6 +21,7 @@ const users = ref([])
 
 const fetchUsers = async () => {
     const response = await fetch('http://localhost:3000/users', { headers: { 'Authorization' : 'Bearer ' + localStorage.getItem('token') }})
+    console.log(response);
     users.value = await response.json()
     console.log(users.value)
 }
