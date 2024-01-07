@@ -12,8 +12,11 @@
         <input type="password" id="password" v-model="password" required>
       </div>
       <button type="submit">כניסה</button>
+      
     </form>
+    <router-link to="/register">הרשמה</router-link>
   </div>
+
 </template>
 
 <script>
@@ -33,7 +36,7 @@ export default {
         userPhone: this.username,
         userPassword: this.password,
       }
-      const response = await fetch(process.env.VUE_APP_URL_USER_LOGIN, {
+      const response = await fetch(process.env.VUE_APP_URL_SERVER + "/users/login/", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -48,10 +51,16 @@ export default {
         else {
           alert('שם משתמש או סיסמה שגויים')
         }
-      localStorage.setItem('token', data.userToken)
+      localStorage.setItem('token', data.userToken )
+      localStorage.setItem('id', data.id )
+      localStorage.setItem('first-name', data.userFirstName )
+      localStorage.setItem('last-name', data.userLastName )
+      localStorage.setItem('phone', data.userPhone )
+      localStorage.setItem('email', data.userEmail )
+      window.location.reload() 
     }
-  }
-};
+}
+}
 </script>
 
 <style scoped>

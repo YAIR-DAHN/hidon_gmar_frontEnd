@@ -22,7 +22,7 @@ import { ref } from 'vue'
 const users = ref([])
 
 const fetchUsers = async () => {
-    const response = await fetch(process.env.VUE_APP_URL_ALL_USER,
+    const response = await fetch(process.env.VUE_APP_URL_SERVER + "/users",
         { headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') } })
     console.log(response);
     users.value = await response.json()

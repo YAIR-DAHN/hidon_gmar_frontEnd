@@ -1,14 +1,14 @@
 <template>
   <div class="about">
-    <tebleUsers/>
+    <tableQuestion/>
   </div>
 </template>
 <script>
-import tebleUsers from '@/components/admin/tebleUsers.vue';
+import tableQuestion from '@/components/admin/tebleQuestion.vue'
 export default {
   name: 'AboutView',
   components: {
-    tebleUsers
+    tableQuestion
   }
 }
 </script>

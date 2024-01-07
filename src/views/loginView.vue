@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="login">
     <LogInFrom/>
   </div>
 </template>
@@ -8,7 +8,7 @@
 import LogInFrom from '@/components/LogInFrom.vue';
 
 export default {
-  name: 'HomeView',
+  name: 'LoginView',
   components: {
     LogInFrom
 

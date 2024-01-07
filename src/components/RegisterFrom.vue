@@ -49,6 +49,7 @@
       <button type="submit">הרשם</button>
     </form>
   </div>
+  <router-link to="/login">כניסה</router-link>
 </template>
 
 <script scoped>
@@ -90,16 +91,17 @@ let submitForm = async () => {
   const credentials = {
     userFirstName: firstName.value,
     userLastName: lastName.value,
-    userbirthdate: birthdate.value,
+    userBirthDate: birthdate.value,
     userCity: city.value,
     userAddress: address.value,
     userPhone: phone.value,
     userEmail: email.value,
     userPassword: password.value,
     userConfirmPassword: confirmPassword.value,
-    userContact: contact.value
+    userContact: contact.value,
+    userRole: "user"
   }
-  const response = await fetch(process.env.VUE_APP_URL_ALL_USER, {
+  const response = await fetch(process.env.VUE_APP_URL_SERVER + "/users/", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -110,7 +112,11 @@ let submitForm = async () => {
   const data = await response.json()
   console.log(data)
   localStorage.setItem('token', data.token)
-
+  localStorage.setItem('id', data.id)
+  localStorage.setItem('first-name', data.userFirstName)
+  localStorage.setItem('last-name', data.userLastName)
+  localStorage.setItem('phone', data.userPhone)
+  localStorage.setItem('email', data.userEmail)
   // router.push('/')
 }
 

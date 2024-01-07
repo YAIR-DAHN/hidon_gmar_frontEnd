@@ -2,8 +2,14 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import loginView from '../views/loginView.vue'
 import RegisterView from '../views/RegisterView.vue'
+import ProfileView from '../views/ProfileView.vue'
 import ShowUserView from '../views/ShowUserView.vue'
+import AddTestView from '../views/AddTestView.vue'
 import AddQuestView from '../views/AddQuestView.vue'
+import tableQuestionView from '../views/QuestionView'
+import tableAnswersView from '../views/AnswersView'
+import testingView from '../views/TestView.vue'
+import testesView from '../views/TestsView.vue'
 
 const routes = [
   {
@@ -30,16 +36,45 @@ const routes = [
     component: RegisterView
   },
   {
+    path: '/Profile',
+    name: 'Profile',
+    component: ProfileView
+  },
+  {
     path: '/showUser',
     name: 'showUser',
     component: ShowUserView
   },
   {
-    path: '/creat_test',
-    name: 'creatTest',
+    path: '/addTest',
+    name: 'addTest',
+    component: AddTestView
+  },
+  {
+    path: '/addQuest',
+    name: 'addQuest',
     component: AddQuestView
   },
-
+  {
+    path: '/showQuests',
+    name: 'showQuests',
+    component: tableQuestionView
+  },
+  {
+    path: '/showAnswers',
+    name: 'showAnswers',
+    component: tableAnswersView
+  },
+  {
+    path: '/tests',
+    name: 'tests',
+    component: testesView
+  },
+  {
+    path: '/testing',
+    name: 'testing',
+    component: testingView
+  }
  
 ]
 

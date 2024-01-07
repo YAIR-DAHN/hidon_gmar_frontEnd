@@ -37,18 +37,25 @@
           </td>
 
           <!-- תשובה בטקסט -->
-          <td v-if="typeQuestion !== 'yn'">
+          <td v-if="typeQuestion != 'yn'">
             <input type="text" v-model="question.correctAnswer" />
           </td>
 
           <!-- תשובת כן/לא -->
           <td v-if="typeQuestion == 'yn'">
+
+            <select v-model="question.correctAnswer" required>
+              <option value="נכון">נכון</option>
+              <option value="לא נכון">לא נכון</option>
+            </select>
+
+<!-- 
             <input type="text" v-model="question.Answer" list="selct" />
 
             <datalist id="selct">
-                <option value="נכון"></option>
-                <option value="לא נכון"></option>
-            </datalist>
+              <option value="נכון"></option>
+              <option value="לא נכון"></option>
+            </datalist> -->
           </td>
           <td>
             <input type="number" v-model="question.score" />
@@ -79,7 +86,7 @@ export default {
         this.questions[this.questions.length - 1].id = pushForm.id;
         console.log(question);
 
-       
+
       };
       this.questions.push({
         examId: '',
@@ -104,7 +111,8 @@ let submitForm = async (questions) => {
     correct_answer: questions.correctAnswer,
     type: questions.type
   }
-  const response = await fetch(process.env.VUE_APP_URL_ADD_QUESTION, {
+  // const response = await fetch(process.env.VUE_APP_URL_ADD_QUESTION, {
+  const response = await fetch(process.env.VUE_APP_URL_SERVER + "/tests/Q/add", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
