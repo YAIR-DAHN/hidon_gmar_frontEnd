@@ -5,10 +5,10 @@
 <div>
 
     <!-- פונקציה לסינון מבחנים, להשלים -->
-    <h2>בחר מבחן להצגה</h2>
+    <!-- <h2>בחר מבחן להצגה</h2>
     <select v-model="selected" @change="fetchUsers">
         <option v-for="test in rowData" :key="test.id" :value="test.id">{{test.Test.testesMgName}}</option>
-    </select>
+    </select> -->
   </div>
     <ag-grid-vue style="height: 500px" class="ag-theme-quartz-auto-dark" :rowData="rowData" :columnDefs="colDefs"
       :undoRedoCellEditing=true undoRedoCellEditingLimit=20 editType='fullRow' enableRtl=true>

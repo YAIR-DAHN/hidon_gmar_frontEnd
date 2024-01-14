@@ -59,7 +59,12 @@ export default {
 
 <style scoped>
 .profile {
-    text-align: right;
+    text-align: center;
+    margin: 0 auto;
+    padding: 50px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: rgba(142, 136, 136, 0.2);
 }
 
 .personal-details {

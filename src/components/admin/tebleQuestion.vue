@@ -1,7 +1,7 @@
 <template>
   <ag-grid-vue style="height: 500px" class="ag-theme-quartz-auto-dark" :rowData="rowData" :columnDefs="colDefs"
     :undoRedoCellEditing=true undoRedoCellEditingLimit=20 editType='fullRow' enableRtl=true>
-   
+
   </ag-grid-vue>
 </template>
 
@@ -39,13 +39,12 @@ export default {
     // Column Definitions: Defines & controls grid columns.
     const colDefs = ref([
       {
-        field: "id", filter: 'agSetColumnFilter', editable: true, width: 60,
+        field: "id", filter: 'agSetColumnFilter', width: 60,
         headerComponentParams: { displayName: "מספר מזהה" },
-        valueSetter: params => {
-          params.data.id = params.newValue;
-          upData(params.data);
-          return true;
-        }
+      },
+      {
+        field: "Test.testesMgName", filter: 'agSetColumnFilter',
+        headerComponentParams: { displayName: "נושא מבחן" }
       },
       {
         field: "question", filter: 'agSetColumnFilter', editable: true,

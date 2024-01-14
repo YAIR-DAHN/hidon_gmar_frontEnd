@@ -34,13 +34,14 @@
         <label for="email">מייל:</label>
         <input type="email" id="email" v-model="email">
       </div>
-      <div class="form-group">
+         <div class="form-group">
         <label for="password">סיסמה:</label>
         <input type="password" id="password" v-model="password" required>
       </div>
       <div class="form-group">
         <label for="confirmPassword">אימות סיסמה:</label>
-        <input type="password" id="confirmPassword" v-model="confirmPassword" required>
+        <input type="password" id="confirmPassword" v-model="confirmPassword" @input="checkPasswordMatch()" required>
+        <p v-if="passwordMismatch">הסיסמאות לא תואמות</p>
       </div>
       <div class="form-group">
         <label for="contact">שיוך למדרשיה/רכז:</label>
@@ -48,8 +49,9 @@
       </div>
       <button type="submit">הרשם</button>
     </form>
+      <router-link to="/login">כניסה</router-link>
+
   </div>
-  <router-link to="/login">כניסה</router-link>
 </template>
 
 <script scoped>
@@ -70,7 +72,10 @@ export default {
       confirmPassword,
       contact,
       cities,
-      submitForm
+      submitForm,
+      confirmPasswordIn,
+      passwordMismatch,
+      checkPasswordMatch
     }
   }
 }
@@ -120,6 +125,13 @@ let submitForm = async () => {
   // router.push('/')
 }
 
+//השוואת סיסמאות
+
+let confirmPasswordIn = ''
+let passwordMismatch = false
+let checkPasswordMatch = () => {
+      passwordMismatch = password !== confirmPasswordIn;
+    }
 
 </script>
 
@@ -127,6 +139,10 @@ let submitForm = async () => {
 .register-form {
   max-width: 400px;
   margin: 0 auto;
+  padding: 50px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: rgba(142, 136, 136, 0.2);
 }
 
 .form-group {

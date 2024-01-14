@@ -178,3 +178,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+/* body{
+ background-color: aliceblue;
+ background: fixed;
+} */
+</style>

@@ -1,48 +1,50 @@
 <template>
   <div>
     <h1>יצירת שאלות למבחן רגיל</h1>
-    <!-- <div>
-      <label for="examId">מזהה מבחן</label>
-      <input type="text" id="examId" v-model="questions.examId" />
-    </div> -->
+    
+    <!-- select test -->
+    <h2>בחר מבחן מהרשימה</h2>
+    <select v-model="testId" required>
+      <option v-for="test in tests" :key="test.id" :value="test.id">{{test.testesMgName}}</option>
+    </select>
     <div>
       <h1>סוג שאלות</h1>
       <div id="slcType">
-        <button @click="typeQuestion = 'r'">רגיל</button>
-        <button @click="typeQuestion = 'a'">אמריקאי</button>
-        <button @click="typeQuestion = 'yn'">נכון/לא נכון</button>
+        <button @click="typeQuestion = 'רגיל'">רגיל</button>
+        <button @click="typeQuestion = 'אמריקאי'">אמריקאי</button>
+        <button @click="typeQuestion = 'כן ולא'">נכון/לא נכון</button>
       </div>
     </div>
     <table>
       <thead>
         <tr>
-          <th>מזהה מבחן</th>
+          <!-- <th>מזהה מבחן</th> -->
           <th>שאלה</th>
-          <th v-if="typeQuestion == 'a'">אופציות של תשובות</th>
+          <th v-if="typeQuestion == 'אמריקאי'">אופציות של תשובות</th>
           <th>תשובה</th>
           <th>ניקוד לשאלה</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(question, index) in questions" :key="index">
-          <td>
+          <!-- <td>
             <input type="text" v-model="question.examId" />
-          </td>
+          </td> -->
           <td>
             <input type="text" v-model="question.questionText" />
           </td>
 
-          <td v-if="typeQuestion == 'a'">
+          <td v-if="typeQuestion == 'אמריקאי'">
             <input type="text" v-model="question.Answer" />
           </td>
 
           <!-- תשובה בטקסט -->
-          <td v-if="typeQuestion != 'yn'">
+          <td v-if="typeQuestion != 'כן ולא'">
             <input type="text" v-model="question.correctAnswer" />
           </td>
 
           <!-- תשובת כן/לא -->
-          <td v-if="typeQuestion == 'yn'">
+          <td v-if="typeQuestion == 'כן ולא'">
 
             <select v-model="question.correctAnswer" required>
               <option value="נכון">נכון</option>
@@ -72,8 +74,10 @@ export default {
   data() {
     return {
       questions: [],
-      submitForm,
-      typeQuestion: ''
+      tests: [],
+      testId: '',
+      typeQuestion: '',
+      submitForm
     };
 
   },
@@ -89,18 +93,37 @@ export default {
 
       };
       this.questions.push({
-        examId: '',
+        examId: this.testId,
         questionText: '',
         Answer: '',
         correctAnswer: '',
         score: 0,
-        type: 'a',
+        type: this.typeQuestion,
         id: ''
       });
 
     }
 
   },
+  mounted(){
+    // get all tests
+    const getTests = async () => {
+      const response = await fetch(process.env.VUE_APP_URL_SERVER + "/tests/T/all", {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+      })
+      const data = await response.json()
+      console.log(data)
+      return data;
+    }
+    getTests().then(data => {
+      console.log(data);
+      this.tests = data;
+    })
+  }
 }
 
 let submitForm = async (questions) => {

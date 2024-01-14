@@ -12,11 +12,10 @@
         <input type="password" id="password" v-model="password" required>
       </div>
       <button type="submit">כניסה</button>
-      
+
     </form>
     <router-link to="/register">הרשמה</router-link>
   </div>
-
 </template>
 
 <script>
@@ -46,20 +45,22 @@ export default {
 
       const data = await response.json()
       console.log(data)
-      if (data.userToken){
-        this.$router.push('/')}
-        else {
-          alert('שם משתמש או סיסמה שגויים')
-        }
-      localStorage.setItem('token', data.userToken )
-      localStorage.setItem('id', data.id )
-      localStorage.setItem('first-name', data.userFirstName )
-      localStorage.setItem('last-name', data.userLastName )
-      localStorage.setItem('phone', data.userPhone )
-      localStorage.setItem('email', data.userEmail )
-      window.location.reload() 
+      if (data.userToken) {
+        localStorage.setItem('token', data.userToken)
+        localStorage.setItem('id', data.id)
+        localStorage.setItem('first-name', data.userFirstName)
+        localStorage.setItem('last-name', data.userLastName)
+        localStorage.setItem('phone', data.userPhone)
+        localStorage.setItem('email', data.userEmail)
+        localStorage.setItem('role', data.userRole)
+        this.$router.push('/')
+        window.location.reload('/')
+      }
+      else {
+        alert('שם משתמש או סיסמה שגויים')
+      }
     }
-}
+  }
 }
 </script>
 
@@ -67,9 +68,11 @@ export default {
 .login-form {
   max-width: 400px;
   margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
+  padding: 50px;
+  border: 2px solid #ccc;
   border-radius: 4px;
+  background-color: rgba(142, 136, 136, 0.2);
+  
 }
 
 .form-group {

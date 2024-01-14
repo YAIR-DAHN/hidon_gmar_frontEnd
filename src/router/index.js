@@ -10,6 +10,7 @@ import tableQuestionView from '../views/QuestionView'
 import tableAnswersView from '../views/AnswersView'
 import testingView from '../views/TestView.vue'
 import testesView from '../views/TestsView.vue'
+import statisticsView from '../views/StatisticsView.vue'
 
 const routes = [
   {
@@ -74,7 +75,13 @@ const routes = [
     path: '/testing',
     name: 'testing',
     component: testingView
+  },
+  {
+    path: '/statistics',
+    name: 'statistics',
+    component: statisticsView
   }
+
  
 ]
 
